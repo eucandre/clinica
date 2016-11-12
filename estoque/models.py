@@ -15,9 +15,11 @@ class Base(models.Model):
     choice = models.CharField(max_length = 150)
             
 class Produto(Base, models.Model):
-    
+    '''
+        Os valores dessa classe serao atualizados mediante a manipulacao das classes de Retirada e a de compra
+    '''
     name = Base.name
-    amount = Base.amount_int
+    amount = Base.amount_int#atualizar com outros campos das tabelas de compra e retirada
     value_per_unit_to_buy = Base.amount_float
     purchase_date = Base.date
     date_vaidate = Base.date
@@ -33,6 +35,17 @@ class Retira_Produto(Base,models.Model):
     amount_withdrawal = Base.amount_float
     responsible = models.ForeignKey(Funcionario)
     amout_refresh = models.CharField(max_length=150)# Sera atualizada pelo formulario
+
+    def __unicode__(self):
+        return self.product
+
+class Compra_Produto(Base,models.Model):
+
+    product = models.ForeignKey(Produto)
+    Date_to_buy_product = Base.date
+    value_per_unit_to_buy = Base.amount_float
+    amout_purchased = Base.amount_float
+    date_vaidate = Base.date
 
     def __unicode__(self):
         return self.product
