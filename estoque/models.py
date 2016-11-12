@@ -42,10 +42,11 @@ class Retira_Produto(Base,models.Model):
 class Compra_Produto(Base,models.Model):
 
     product = models.ForeignKey(Produto)
-    Date_to_buy_product = Base.date
+    purchase_date_product = Base.date
     value_per_unit_to_buy = Base.amount_float
     amout_purchased = Base.amount_float
     date_vaidate = Base.date
 
     def __unicode__(self):
         return self.product
+
