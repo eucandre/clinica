@@ -1,4 +1,5 @@
 from __future__ import unicode_literals
+from _ast import mod
 
 from django.db import models
 
@@ -12,9 +13,12 @@ FUNCTION = ((u'Gerente','Gerente'),(u'Zelador(a)','Zelador(a)'),
             (u'Atendente', 'Atendente'), (u'Vigia','Vigia'),
             (u'Seguranca', 'Seguranca'))
 
+SEXO = ((u'Masculino','Masculino'),(u'Feminino','Feminino'))
+
 class Dentista(models.Model):
 
     name = models.CharField(max_length=150, unique = True)
+    sexo = models.CharField(max_length=150, choices=SEXO)
     date_register = models.DateField()
     
     def __unicode__(self):

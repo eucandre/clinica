@@ -5,7 +5,7 @@
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:sqlite:C:\Users\eucandre\Desktop\clinica\db.clinic</jdbc-url>
+      <jdbc-url>jdbc:mysql://127.0.0.1/$PROJECT_DIR$/clinic</jdbc-url>
       <libraries />
     </data-source>
   </component>
