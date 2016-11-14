@@ -1,12 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="1842557859">
+  <component name="DataSourceManagerImpl" format="xml" hash="2266270187">
     <data-source source="LOCAL" name="Django default" uuid="b9fff702-dae6-47b7-9723-7200203b8891">
       <driver-ref>sqlite.xerial</driver-ref>
       <synchronize>true</synchronize>
       <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
-      <jdbc-url>jdbc:mysql://127.0.0.1/$PROJECT_DIR$/clinic</jdbc-url>
-      <libraries />
+      <jdbc-url>jdbc:sqlite:C:\Users\eucandre\Desktop\clinica\db.clinic</jdbc-url>
+      <libraries>
+        <library>
+          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/xerial-sqlite-license.txt</url>
+        </library>
+        <library>
+          <url>file://$APPLICATION_CONFIG_DIR$/jdbc-drivers/sqlite-jdbc-3.8.11.2.jar</url>
+        </library>
+      </libraries>
     </data-source>
   </component>
 </project>

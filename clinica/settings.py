@@ -56,7 +56,7 @@ ROOT_URLCONF = 'clinica.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': ['C:/Users/eucandre/Desktop/clinica/templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
