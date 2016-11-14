@@ -27,7 +27,7 @@ class Dentista(models.Model):
 class Funcionario(Dentista, models.Model):
     
     name = Dentista.name
-    sex = Dentista.sexo
+    sex = Dentista.sex
     date_entry = Dentista.date_register
     function = models.CharField(max_length=150, choices = FUNCTION)
     salary = models.FloatField()
