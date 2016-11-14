@@ -1,5 +1,5 @@
 from __future__ import unicode_literals
-from _ast import mod
+
 
 from django.db import models
 
@@ -18,7 +18,7 @@ SEXO = ((u'Masculino','Masculino'),(u'Feminino','Feminino'))
 class Dentista(models.Model):
 
     name = models.CharField(max_length=150, unique = True)
-    sexo = models.CharField(max_length=150, choices=SEXO)
+    sex = models.CharField(max_length=150, choices=SEXO)
     date_register = models.DateField()
     
     def __unicode__(self):
@@ -27,6 +27,7 @@ class Dentista(models.Model):
 class Funcionario(Dentista, models.Model):
     
     name = Dentista.name
+    sex = Dentista.sexo
     date_entry = Dentista.date_register
     function = models.CharField(max_length=150, choices = FUNCTION)
     salary = models.FloatField()
@@ -36,10 +37,11 @@ class Funcionario(Dentista, models.Model):
 
 class CLiente(models.Model):
 
-    name = models.CharField(max_length=150, unique = True)
+    name = models.CharField(max_length=150, unique=True)
     date_register = models.DateField()
     professional = models.ForeignKey(Dentista)
     time_contract = models.DateField()
+    profession = models.CharField(max_length=150)
     type_plane = models.CharField(max_length = 150, choices = TYPE_PLANE)    
     
     def __unicode__(self):
