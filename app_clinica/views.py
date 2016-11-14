@@ -1,3 +1,4 @@
 from django.shortcuts import render
-
-# Create your views here.
+from django.shortcuts import *
+def inicia(request):
+    return render_to_response("base.html")
