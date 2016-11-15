@@ -1,10 +1,12 @@
 from rest_framework import serializers
 from .models import *
 
+
 class DentistaSerializer(serializers.ModelSerializer):
     class Meta:
         model = Dentista
         fields = ('name', 'sex', 'email', 'phone', 'active')
+
 
 class ClienteSerializer(serializers.ModelSerializer):
     class Meta:
