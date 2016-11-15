@@ -4,6 +4,47 @@
     <database-info product="SQLite" version="3.8.11" jdbc-version="2.1" driver-name="SQLiteJDBC" driver-version="native"/>
     <case-sensitivity plain-identifiers="mixed" quoted-identifiers="mixed"/>
     <schema name="" catalog=""/>
+    <table name="app_clinica_cliente" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="name" sqlType="VARCHAR(150)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="date_register" sqlType="DATE" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="time_contract" sqlType="DATE" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="type_plane" sqlType="VARCHAR(150)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="profession" sqlType="VARCHAR(150)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR(254)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="phone" sqlType="VARCHAR(150)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="street" sqlType="VARCHAR(150)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="district" sqlType="VARCHAR(150)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="city" sqlType="VARCHAR(150)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="active" sqlType="BOOL" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="professional_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <primary-key columns="id"/>
+      <foreign-key name="#FAKE_app_clinica_cliente_1" columns="professional_id" ref-table="app_clinica_dentista" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <index name="app_clinica_cliente_3a5d432b" unique="true" columns="professional_id"/>
+    </table>
+    <table name="app_clinica_dentista" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="name" sqlType="VARCHAR(150)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="sex" sqlType="VARCHAR(150)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="email" sqlType="VARCHAR(254)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="phone" sqlType="VARCHAR(150)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="active" sqlType="BOOL" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <primary-key columns="id"/>
+      <exported-key name="#FAKE_app_clinica_cliente_1" table="app_clinica_cliente" schema="" catalog="" columns="professional_id"/>
+      <exported-key name="#FAKE_app_clinica_funcionario_1" table="app_clinica_funcionario" schema="" catalog="" columns="dentista_ptr_id"/>
+    </table>
+    <table name="app_clinica_funcionario" schema="" catalog="" type="TABLE">
+      <column name="dentista_ptr_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="date_entry" sqlType="DATE" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="function" sqlType="VARCHAR(150)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="street" sqlType="VARCHAR(150)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="district" sqlType="VARCHAR(150)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="city" sqlType="VARCHAR(150)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="salary" sqlType="REAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <primary-key columns="dentista_ptr_id"/>
+      <foreign-key name="#FAKE_app_clinica_funcionario_1" columns="dentista_ptr_id" ref-table="app_clinica_dentista" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <exported-key name="#FAKE_estoque_retira_produto_1" table="estoque_retira_produto" schema="" catalog="" columns="responsible_id"/>
+    </table>
     <table name="auth_group" schema="" catalog="" type="TABLE">
       <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
       <column name="name" sqlType="VARCHAR(80)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
@@ -110,6 +151,46 @@
       <column name="expire_date" sqlType="DATETIME" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
       <primary-key columns="session_key"/>
       <index name="django_session_de54fa62" unique="true" columns="expire_date"/>
+    </table>
+    <table name="estoque_base" schema="" catalog="" type="TABLE">
+      <column name="id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="name" sqlType="VARCHAR(150)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="amount_float" sqlType="REAL" precision="2000000000" scale="10" nullable="false" jdbcType="6"/>
+      <column name="amount_int" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="date" sqlType="DATE" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="date_timed" sqlType="DATETIME" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="choice" sqlType="VARCHAR(150)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <primary-key columns="id"/>
+      <exported-key name="#FAKE_estoque_compra_produto_2" table="estoque_compra_produto" schema="" catalog="" columns="base_ptr_id"/>
+      <exported-key name="#FAKE_estoque_produto_1" table="estoque_produto" schema="" catalog="" columns="base_ptr_id"/>
+      <exported-key name="#FAKE_estoque_retira_produto_3" table="estoque_retira_produto" schema="" catalog="" columns="base_ptr_id"/>
+    </table>
+    <table name="estoque_compra_produto" schema="" catalog="" type="TABLE">
+      <column name="base_ptr_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="product_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <primary-key columns="base_ptr_id"/>
+      <foreign-key name="#FAKE_estoque_compra_produto_1" columns="product_id" ref-table="estoque_produto" ref-schema="" ref-catalog="" ref-columns="base_ptr_id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_estoque_compra_produto_2" columns="base_ptr_id" ref-table="estoque_base" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <index name="estoque_compra_produto_9bea82de" unique="true" columns="product_id"/>
+    </table>
+    <table name="estoque_produto" schema="" catalog="" type="TABLE">
+      <column name="base_ptr_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <primary-key columns="base_ptr_id"/>
+      <foreign-key name="#FAKE_estoque_produto_1" columns="base_ptr_id" ref-table="estoque_base" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <exported-key name="#FAKE_estoque_compra_produto_1" table="estoque_compra_produto" schema="" catalog="" columns="product_id"/>
+      <exported-key name="#FAKE_estoque_retira_produto_2" table="estoque_retira_produto" schema="" catalog="" columns="product_id"/>
+    </table>
+    <table name="estoque_retira_produto" schema="" catalog="" type="TABLE">
+      <column name="base_ptr_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="amout_refresh" sqlType="VARCHAR(150)" precision="2000000000" scale="10" nullable="false" jdbcType="12"/>
+      <column name="product_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <column name="responsible_id" sqlType="INTEGER" precision="2000000000" scale="10" nullable="false" jdbcType="4"/>
+      <primary-key columns="base_ptr_id"/>
+      <foreign-key name="#FAKE_estoque_retira_produto_1" columns="responsible_id" ref-table="app_clinica_funcionario" ref-schema="" ref-catalog="" ref-columns="dentista_ptr_id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_estoque_retira_produto_2" columns="product_id" ref-table="estoque_produto" ref-schema="" ref-catalog="" ref-columns="base_ptr_id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <foreign-key name="#FAKE_estoque_retira_produto_3" columns="base_ptr_id" ref-table="estoque_base" ref-schema="" ref-catalog="" ref-columns="id" update-rule="3" delete-rule="3" deferrability="1"/>
+      <index name="estoque_retira_produto_4c66c5b6" unique="true" columns="responsible_id"/>
+      <index name="estoque_retira_produto_9bea82de" unique="true" columns="product_id"/>
     </table>
     <table name="sqlite_sequence" schema="" catalog="" type="TABLE">
       <column name="name" sqlType="" precision="2000000000" scale="10" nullable="true" jdbcType="12"/>
