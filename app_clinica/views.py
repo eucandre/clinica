@@ -7,6 +7,7 @@ from .serializers import *
 def inicia(request):
     return render_to_response("base.html")
 
+#------------ REST API ----------------#
 class DentistaViewSet(viewsets.ModelViewSet):
     queryset = Dentista.objects.all()
     serializer_class = DentistaSerializer
